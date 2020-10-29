@@ -6,11 +6,14 @@ import com.idoit.item.bijouterie.belt.StrengthBelt;
 import com.idoit.item.bijouterie.necklace.StrengthNecklace;
 import com.idoit.item.bijouterie.ring.StrengthRing;
 import com.idoit.item.weapon.Bow;
+import com.idoit.quest.Quest;
+import com.idoit.skill.AccurateShot;
 
 public class Archer {
     public String name;
     public int hp = 100;
     public int mana = 100;
+    public int stamina = 100;
     public int agility = 7;
     public int strength;
     public int intelligence;
@@ -28,6 +31,8 @@ public class Archer {
     public StrengthBelt belt;
     public StrengthNecklace necklace;
     public Point point = new Point(0, 0);
+    public Quest activeQuest;
+    public AccurateShot skill;
 
     public Archer(String n) {
         name = n;
@@ -36,7 +41,12 @@ public class Archer {
     public void hit(Knight enemy) {
         enemy.hp = enemy.hp - 10;
         bow.durability = bow.durability - 1;
+        stamina = stamina - 10;
         System.out.println(name + " нанес 10 урона " + enemy.name + ". Теперь у " + enemy.name + " " + enemy.hp + " хп.");
+    }
+
+    public void castSkill(Knight enemy) {
+        skill.apply(this, enemy);
     }
 
     public void go(int x, int y) {
@@ -81,5 +91,9 @@ public class Archer {
 
     public void setNecklace(StrengthNecklace necklace) {
         this.necklace = necklace;
+    }
+
+    public void setActiveQuest(Quest activeQuest) {
+        this.activeQuest = activeQuest;
     }
 }

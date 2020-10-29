@@ -3,7 +3,7 @@ package com.idoit;
 import com.idoit.character.Archer;
 import com.idoit.character.Knight;
 import com.idoit.character.Wizard;
-import com.idoit.character.npc.Blacksmith;
+import com.idoit.character.npc.seller.Blacksmith;
 import com.idoit.item.armor.Helmet;
 import com.idoit.item.bijouterie.ring.StrengthRing;
 import com.idoit.item.common.potion.HpPotion;
