@@ -19,4 +19,8 @@ public class Archer {
     public Gloves gloves;
     public Boots boots;
     public Shield shield;
+
+    public Archer(String n) {
+        name = n;
+    }
 }
