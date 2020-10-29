@@ -3,6 +3,7 @@ package com.idoit;
 public class App {
 
     public static void main(String[] args) {
-        //Add your code here...
+        System.out.println("Vlad");
+        System.out.println(23);
     }
 }
