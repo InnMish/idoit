@@ -27,6 +27,9 @@ public class App {
         Sword sword = new Sword("Sharp sword", 10);
         Staff staff = new Staff("Wooden staff", 7);
         Bow bow = new Bow("Student bow", 3);
+        knight1.setSword(sword);
+        archer.setBow(bow);
+        wizard.setStaff(staff);
         System.out.println(sword.damage);
         System.out.println(staff.damage);
         System.out.println(bow.damage);
