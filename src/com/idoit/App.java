@@ -16,8 +16,8 @@ public class App {
     public static void main(String[] args) {
         Knight knight1 = new Knight("Max");
         Knight knight2 = new Knight("Eugene");
-        System.out.println(knight1.name);
-        System.out.println(knight2.name);
+        knight1.hit(knight2);
+        knight2.hit(knight1);
 
         Wizard wizard = new Wizard("Dumbledore");
         Archer archer = new Archer("Hood");
