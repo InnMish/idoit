@@ -1,6 +1,7 @@
 package com.idoit.character.npc.seller;
 
 import com.idoit.item.armor.*;
+import com.idoit.item.special.InitialStone;
 
 public class ArmorSeller {
     public String name;
@@ -30,5 +31,21 @@ public class ArmorSeller {
 
     public void fix(Shield shield) {
         shield.setDurability(100);
+    }
+
+    public void accept(InitialStone stone) {
+        level++; //то же, что level = level + 1;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getGold() {
+        return gold;
     }
 }
