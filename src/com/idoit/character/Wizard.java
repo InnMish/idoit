@@ -46,7 +46,7 @@ public class Wizard {
     }
 
     public void castSkill(Knight knight) {
-        skill.apply(knight);
+        skill.apply(this, knight);
     }
 
     public void go(int x, int y) {
