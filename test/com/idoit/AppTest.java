@@ -13,18 +13,4 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("Проверка логики в классе App")
 class AppTest {
 
-    @Test
-    @DisplayName("В методе main должны быть два вывода на экран: I do it! (строка) и текущий год (число)")
-    void testMainPrintsPhraseAndCurrentYear() throws IOException {
-        ByteArrayOutputStream bo = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(bo));
-
-        App.main(new String[]{});
-        bo.flush();
-        String actualLines = new String(bo.toByteArray()).trim();
-
-        String expectedLines = "I do it!\r\n" + LocalDateTime.now().getYear();
-        String message = MessageUtil.formatAssertMessage(expectedLines, actualLines);
-        assertEquals(expectedLines, actualLines, message);
-    }
 }
