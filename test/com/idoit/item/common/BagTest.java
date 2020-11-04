@@ -6,6 +6,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 @DisplayName("Тесты логики в классе Bag")
 class BagTest extends AbstractTest {
 
@@ -24,5 +28,12 @@ class BagTest extends AbstractTest {
     @Test
     void testBagHasAllFields() {
         testClassHasFields();
+    }
+
+    @DisplayName("Тест, что в классе Bag есть конструктор принимающий название сумки")
+    @Test
+    void testBagHasConstructorWithNameAndPointsParams() {
+        testClassHasConstructors();
+        testConstructorSetsValueToFields(new Object[]{"test"});
     }
 }

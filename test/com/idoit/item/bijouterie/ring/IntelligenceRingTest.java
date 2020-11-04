@@ -1,7 +1,6 @@
 package com.idoit.item.bijouterie.ring;
 
 import com.idoit.AbstractTest;
-import com.idoit.meta.item.bijouterie.ring.AgilityRingMeta;
 import com.idoit.meta.item.bijouterie.ring.IntelligenceRingMeta;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -25,5 +24,12 @@ class IntelligenceRingTest extends AbstractTest {
     @Test
     void testIntelligenceRingHasAllFields() {
         testClassHasFields();
+    }
+
+    @DisplayName("Тест, что в классе IntelligenceRing есть конструктор принимающий название и добавляемые кольцом очки")
+    @Test
+    void testIntelligenceRingHasConstructorWithNameAndPointsParams() {
+        testClassHasConstructors();
+        testConstructorSetsValueToFields(new Object[]{"test", 3});
     }
 }
