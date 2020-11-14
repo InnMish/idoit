@@ -119,4 +119,8 @@ public class Knight {
     public void setActiveQuest(Quest activeQuest) {
         this.activeQuest = activeQuest;
     }
+
+    public void setSkill(Rage skill) {
+        this.skill = skill;
+    }
 }
