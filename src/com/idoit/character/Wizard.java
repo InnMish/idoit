@@ -2,9 +2,9 @@ package com.idoit.character;
 
 import com.idoit.battlefield.Point;
 import com.idoit.item.armor.*;
-import com.idoit.item.bijouterie.belt.StrengthBelt;
-import com.idoit.item.bijouterie.necklace.StrengthNecklace;
-import com.idoit.item.bijouterie.ring.StrengthRing;
+import com.idoit.item.bijouterie.belt.IntelligenceBelt;
+import com.idoit.item.bijouterie.necklace.IntelligenceNecklace;
+import com.idoit.item.bijouterie.ring.IntelligenceRing;
 import com.idoit.item.weapon.Staff;
 import com.idoit.quest.Quest;
 import com.idoit.skill.Heal;
@@ -26,10 +26,10 @@ public class Wizard {
     public Gloves gloves;
     public Boots boots;
     public Shield shield;
-    public StrengthRing leftRing;
-    public StrengthRing rightRing;
-    public StrengthBelt belt;
-    public StrengthNecklace necklace;
+    public IntelligenceRing leftRing;
+    public IntelligenceRing rightRing;
+    public IntelligenceBelt belt;
+    public IntelligenceNecklace necklace;
     public Point point = new Point(0, 0);
     public Quest activeQuest;
     public Heal skill;
@@ -80,23 +80,22 @@ public class Wizard {
     public void setGold(int gold) {
         this.gold = gold;
     }
-
-    public void setLeftRing(StrengthRing leftRing) {
+    public void setLeftRing(IntelligenceRing leftRing) {
         intelligence += leftRing.getPointsToAdd(); // то же, что intelligence  = intelligence + leftRing.getPointsToAdd();
         this.leftRing = leftRing;
     }
 
-    public void setRightRing(StrengthRing rightRing) {
+    public void setRightRing(IntelligenceRing rightRing) {
         intelligence += leftRing.getPointsToAdd();
         this.rightRing = rightRing;
     }
 
-    public void setBelt(StrengthBelt belt) {
+    public void setBelt(IntelligenceBelt belt) {
         intelligence += leftRing.getPointsToAdd();
         this.belt = belt;
     }
 
-    public void setNecklace(StrengthNecklace necklace) {
+    public void setNecklace(IntelligenceNecklace necklace) {
         intelligence += leftRing.getPointsToAdd();
         this.necklace = necklace;
     }
@@ -189,19 +188,19 @@ public class Wizard {
         return shield;
     }
 
-    public StrengthRing getLeftRing() {
+    public IntelligenceRing getLeftRing() {
         return leftRing;
     }
 
-    public StrengthRing getRightRing() {
+    public IntelligenceRing getRightRing() {
         return rightRing;
     }
 
-    public StrengthBelt getBelt() {
+    public IntelligenceBelt getBelt() {
         return belt;
     }
 
-    public StrengthNecklace getNecklace() {
+    public IntelligenceNecklace getNecklace() {
         return necklace;
     }
 

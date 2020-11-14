@@ -2,9 +2,9 @@ package com.idoit.character;
 
 import com.idoit.battlefield.Point;
 import com.idoit.item.armor.*;
-import com.idoit.item.bijouterie.belt.StrengthBelt;
-import com.idoit.item.bijouterie.necklace.StrengthNecklace;
-import com.idoit.item.bijouterie.ring.StrengthRing;
+import com.idoit.item.bijouterie.belt.AgilityBelt;
+import com.idoit.item.bijouterie.necklace.AgilityNecklace;
+import com.idoit.item.bijouterie.ring.AgilityRing;
 import com.idoit.item.weapon.Bow;
 import com.idoit.quest.Quest;
 import com.idoit.skill.AccurateShot;
@@ -26,10 +26,10 @@ public class Archer {
     public Gloves gloves;
     public Boots boots;
     public Shield shield;
-    public StrengthRing leftRing;
-    public StrengthRing rightRing;
-    public StrengthBelt belt;
-    public StrengthNecklace necklace;
+    public AgilityRing leftRing;
+    public AgilityRing rightRing;
+    public AgilityBelt belt;
+    public AgilityNecklace necklace;
     public Point point = new Point(0, 0);
     public Quest activeQuest;
     public AccurateShot skill;
@@ -77,22 +77,22 @@ public class Archer {
         this.shield = shield;
     }
 
-    public void setLeftRing(StrengthRing leftRing) {
+    public void setLeftRing(AgilityRing leftRing) {
         agility += leftRing.getPointsToAdd(); //то же, что agility = agility + leftRing.getPointsToAdd();
         this.leftRing = leftRing;
     }
 
-    public void setRightRing(StrengthRing rightRing) {
+    public void setRightRing(AgilityRing rightRing) {
         agility += rightRing.getPointsToAdd();
         this.rightRing = rightRing;
     }
 
-    public void setBelt(StrengthBelt belt) {
+    public void setBelt(AgilityBelt belt) {
         agility += belt.getPointsToAdd();
         this.belt = belt;
     }
 
-    public void setNecklace(StrengthNecklace necklace) {
+    public void setNecklace(AgilityNecklace necklace) {
         agility += necklace.getPointsToAdd();
         this.necklace = necklace;
     }
@@ -185,19 +185,19 @@ public class Archer {
         return shield;
     }
 
-    public StrengthRing getLeftRing() {
+    public AgilityRing getLeftRing() {
         return leftRing;
     }
 
-    public StrengthRing getRightRing() {
+    public AgilityRing getRightRing() {
         return rightRing;
     }
 
-    public StrengthBelt getBelt() {
+    public AgilityBelt getBelt() {
         return belt;
     }
 
-    public StrengthNecklace getNecklace() {
+    public AgilityNecklace getNecklace() {
         return necklace;
     }
 
