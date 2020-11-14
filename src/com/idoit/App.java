@@ -16,8 +16,6 @@ public class App {
     public static void main(String[] args) {
         Knight knight1 = new Knight("Max");
         Knight knight2 = new Knight("Eugene");
-        knight1.hit(knight2);
-        knight2.hit(knight1);
 
         Wizard wizard = new Wizard("Dumbledore");
         Archer archer = new Archer("Hood");
@@ -30,6 +28,10 @@ public class App {
         knight1.setSword(sword);
         archer.setBow(bow);
         wizard.setStaff(staff);
+
+        knight1.hit(knight2);
+        knight2.hit(knight1);
+
         System.out.println(sword.damage);
         System.out.println(staff.damage);
         System.out.println(bow.damage);
