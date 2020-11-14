@@ -68,11 +68,11 @@ public class Knight {
         this.experience = this.experience + exp;
     }
 
-    private void calculatePhysicalDefence() {
+    public void calculatePhysicalDefence() {
         physicalDefence = physicalDefence + helmet.physicalDefence + cuirass.physicalDefence + gloves.physicalDefence + boots.physicalDefence + shield.physicalDefence;
     }
 
-    private void calculateMagicDefence() {
+    public void calculateMagicDefence() {
         magicDefence = magicDefence + helmet.magicDefence + cuirass.magicDefence + gloves.magicDefence + boots.magicDefence + shield.magicDefence;
     }
 
