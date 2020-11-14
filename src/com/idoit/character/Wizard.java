@@ -77,30 +77,26 @@ public class Wizard {
         this.shield = shield;
     }
 
-    public void setLeftRing(IntelligenceRing leftRing) {
     public void setGold(int gold) {
         this.gold = gold;
     }
 
-    public void setLeftRing(StrengthRing leftRing) {
+    public void setLeftRing(IntelligenceRing leftRing) {
         intelligence += leftRing.getPointsToAdd(); // то же, что intelligence  = intelligence + leftRing.getPointsToAdd();
         this.leftRing = leftRing;
     }
 
     public void setRightRing(IntelligenceRing rightRing) {
-    public void setRightRing(StrengthRing rightRing) {
         intelligence += leftRing.getPointsToAdd();
         this.rightRing = rightRing;
     }
 
     public void setBelt(IntelligenceBelt belt) {
-    public void setBelt(StrengthBelt belt) {
         intelligence += leftRing.getPointsToAdd();
         this.belt = belt;
     }
 
     public void setNecklace(IntelligenceNecklace necklace) {
-    public void setNecklace(StrengthNecklace necklace) {
         intelligence += leftRing.getPointsToAdd();
         this.necklace = necklace;
     }
@@ -197,19 +193,19 @@ public class Wizard {
         return shield;
     }
 
-    public StrengthRing getLeftRing() {
+    public IntelligenceRing getLeftRing() {
         return leftRing;
     }
 
-    public StrengthRing getRightRing() {
+    public IntelligenceRing getRightRing() {
         return rightRing;
     }
 
-    public StrengthBelt getBelt() {
+    public IntelligenceBelt getBelt() {
         return belt;
     }
 
-    public StrengthNecklace getNecklace() {
+    public IntelligenceNecklace getNecklace() {
         return necklace;
     }
 

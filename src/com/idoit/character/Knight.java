@@ -79,7 +79,7 @@ public class Knight {
         hp += potion.getPointsToRecover();
     }
 
-    private void calculatePhysicalDefence() {
+    public void calculatePhysicalDefence() {
         physicalDefence = physicalDefence + helmet.physicalDefence + cuirass.physicalDefence + gloves.physicalDefence + boots.physicalDefence + shield.physicalDefence;
     }
 

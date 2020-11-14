@@ -78,25 +78,21 @@ public class Archer {
     }
 
     public void setLeftRing(AgilityRing leftRing) {
-    public void setLeftRing(StrengthRing leftRing) {
         agility += leftRing.getPointsToAdd(); //то же, что agility = agility + leftRing.getPointsToAdd();
         this.leftRing = leftRing;
     }
 
     public void setRightRing(AgilityRing rightRing) {
-    public void setRightRing(StrengthRing rightRing) {
         agility += rightRing.getPointsToAdd();
         this.rightRing = rightRing;
     }
 
     public void setBelt(AgilityBelt belt) {
-    public void setBelt(StrengthBelt belt) {
         agility += belt.getPointsToAdd();
         this.belt = belt;
     }
 
     public void setNecklace(AgilityNecklace necklace) {
-    public void setNecklace(StrengthNecklace necklace) {
         agility += necklace.getPointsToAdd();
         this.necklace = necklace;
     }
@@ -193,19 +189,19 @@ public class Archer {
         return shield;
     }
 
-    public StrengthRing getLeftRing() {
+    public AgilityRing getLeftRing() {
         return leftRing;
     }
 
-    public StrengthRing getRightRing() {
+    public AgilityRing getRightRing() {
         return rightRing;
     }
 
-    public StrengthBelt getBelt() {
+    public AgilityBelt getBelt() {
         return belt;
     }
 
-    public StrengthNecklace getNecklace() {
+    public AgilityNecklace getNecklace() {
         return necklace;
     }
 
