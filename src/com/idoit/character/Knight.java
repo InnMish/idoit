@@ -223,4 +223,8 @@ public class Knight {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
+
+    public void setSkill(Rage skill) {
+        this.skill = skill;
+    }
 }
