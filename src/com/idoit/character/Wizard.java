@@ -174,4 +174,8 @@ public class Wizard {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
+
+    public void setSkill(Heal skill) {
+        this.skill = skill;
+    }
 }
