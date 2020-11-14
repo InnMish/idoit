@@ -2,6 +2,9 @@ package com.idoit.character;
 
 import com.idoit.battlefield.Point;
 import com.idoit.item.armor.*;
+import com.idoit.item.bijouterie.belt.IntelligenceBelt;
+import com.idoit.item.bijouterie.necklace.IntelligenceNecklace;
+import com.idoit.item.bijouterie.ring.IntelligenceRing;
 import com.idoit.item.bijouterie.belt.StrengthBelt;
 import com.idoit.item.bijouterie.necklace.StrengthNecklace;
 import com.idoit.item.bijouterie.ring.StrengthRing;
@@ -139,19 +142,19 @@ public class Wizard {
         return profile.getInventory().getShield();
     }
 
-    public StrengthRing getLeftRing() {
+    public IntelligenceRing getLeftRing() {
         return leftRing;
     }
 
-    public StrengthRing getRightRing() {
+    public IntelligenceRing getRightRing() {
         return rightRing;
     }
 
-    public StrengthBelt getBelt() {
+    public IntelligenceBelt getBelt() {
         return belt;
     }
 
-    public StrengthNecklace getNecklace() {
+    public IntelligenceNecklace getNecklace() {
         return necklace;
     }
 

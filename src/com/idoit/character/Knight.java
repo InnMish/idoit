@@ -70,7 +70,7 @@ public class Knight {
         profile.setHp(profile.getHp() + apple.getPointsToRecover());
     }
 
-    private void calculatePhysicalDefence() {
+    public void calculatePhysicalDefence() {
         int updatedPhyDefence = profile.getPhysicalDefence() +
                 profile.getInventory().getHelmet().getPhysicalDefence() +
                 profile.getInventory().getCuirass().getPhysicalDefence() +

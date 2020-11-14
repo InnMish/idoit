@@ -2,6 +2,9 @@ package com.idoit.character;
 
 import com.idoit.battlefield.Point;
 import com.idoit.item.armor.*;
+import com.idoit.item.bijouterie.belt.AgilityBelt;
+import com.idoit.item.bijouterie.necklace.AgilityNecklace;
+import com.idoit.item.bijouterie.ring.AgilityRing;
 import com.idoit.item.bijouterie.belt.StrengthBelt;
 import com.idoit.item.bijouterie.necklace.StrengthNecklace;
 import com.idoit.item.bijouterie.ring.StrengthRing;
@@ -139,19 +142,19 @@ public class Archer {
         return profile.getInventory().getShield();
     }
 
-    public StrengthRing getLeftRing() {
+    public AgilityRing getLeftRing() {
         return leftRing;
     }
 
-    public StrengthRing getRightRing() {
+    public AgilityRing getRightRing() {
         return rightRing;
     }
 
-    public StrengthBelt getBelt() {
+    public AgilityBelt getBelt() {
         return belt;
     }
 
-    public StrengthNecklace getNecklace() {
+    public AgilityNecklace getNecklace() {
         return necklace;
     }
 
