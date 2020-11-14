@@ -2,9 +2,9 @@ package com.idoit.character;
 
 import com.idoit.battlefield.Point;
 import com.idoit.item.armor.*;
-import com.idoit.item.bijouterie.belt.StrengthBelt;
-import com.idoit.item.bijouterie.necklace.StrengthNecklace;
-import com.idoit.item.bijouterie.ring.StrengthRing;
+import com.idoit.item.bijouterie.belt.AgilityBelt;
+import com.idoit.item.bijouterie.necklace.AgilityNecklace;
+import com.idoit.item.bijouterie.ring.AgilityRing;
 import com.idoit.item.weapon.Bow;
 import com.idoit.quest.Quest;
 import com.idoit.skill.AccurateShot;
@@ -26,10 +26,10 @@ public class Archer {
     public Gloves gloves;
     public Boots boots;
     public Shield shield;
-    public StrengthRing leftRing;
-    public StrengthRing rightRing;
-    public StrengthBelt belt;
-    public StrengthNecklace necklace;
+    public AgilityRing leftRing;
+    public AgilityRing rightRing;
+    public AgilityBelt belt;
+    public AgilityNecklace necklace;
     public Point point = new Point(0, 0);
     public Quest activeQuest;
     public AccurateShot skill;
@@ -77,21 +77,25 @@ public class Archer {
         this.shield = shield;
     }
 
+    public void setLeftRing(AgilityRing leftRing) {
     public void setLeftRing(StrengthRing leftRing) {
         agility += leftRing.getPointsToAdd(); //то же, что agility = agility + leftRing.getPointsToAdd();
         this.leftRing = leftRing;
     }
 
+    public void setRightRing(AgilityRing rightRing) {
     public void setRightRing(StrengthRing rightRing) {
         agility += rightRing.getPointsToAdd();
         this.rightRing = rightRing;
     }
 
+    public void setBelt(AgilityBelt belt) {
     public void setBelt(StrengthBelt belt) {
         agility += belt.getPointsToAdd();
         this.belt = belt;
     }
 
+    public void setNecklace(AgilityNecklace necklace) {
     public void setNecklace(StrengthNecklace necklace) {
         agility += necklace.getPointsToAdd();
         this.necklace = necklace;
@@ -119,6 +123,10 @@ public class Archer {
 
     public void setActiveQuest(Quest activeQuest) {
         this.activeQuest = activeQuest;
+    }
+
+    public void setSkill(AccurateShot skill) {
+        this.skill = skill;
     }
 
     public String getName() {

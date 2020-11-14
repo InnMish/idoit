@@ -2,9 +2,9 @@ package com.idoit.character;
 
 import com.idoit.battlefield.Point;
 import com.idoit.item.armor.*;
-import com.idoit.item.bijouterie.belt.StrengthBelt;
-import com.idoit.item.bijouterie.necklace.StrengthNecklace;
-import com.idoit.item.bijouterie.ring.StrengthRing;
+import com.idoit.item.bijouterie.belt.IntelligenceBelt;
+import com.idoit.item.bijouterie.necklace.IntelligenceNecklace;
+import com.idoit.item.bijouterie.ring.IntelligenceRing;
 import com.idoit.item.weapon.Staff;
 import com.idoit.quest.Quest;
 import com.idoit.skill.Heal;
@@ -26,10 +26,10 @@ public class Wizard {
     public Gloves gloves;
     public Boots boots;
     public Shield shield;
-    public StrengthRing leftRing;
-    public StrengthRing rightRing;
-    public StrengthBelt belt;
-    public StrengthNecklace necklace;
+    public IntelligenceRing leftRing;
+    public IntelligenceRing rightRing;
+    public IntelligenceBelt belt;
+    public IntelligenceNecklace necklace;
     public Point point = new Point(0, 0);
     public Quest activeQuest;
     public Heal skill;
@@ -77,6 +77,7 @@ public class Wizard {
         this.shield = shield;
     }
 
+    public void setLeftRing(IntelligenceRing leftRing) {
     public void setGold(int gold) {
         this.gold = gold;
     }
@@ -86,16 +87,19 @@ public class Wizard {
         this.leftRing = leftRing;
     }
 
+    public void setRightRing(IntelligenceRing rightRing) {
     public void setRightRing(StrengthRing rightRing) {
         intelligence += leftRing.getPointsToAdd();
         this.rightRing = rightRing;
     }
 
+    public void setBelt(IntelligenceBelt belt) {
     public void setBelt(StrengthBelt belt) {
         intelligence += leftRing.getPointsToAdd();
         this.belt = belt;
     }
 
+    public void setNecklace(IntelligenceNecklace necklace) {
     public void setNecklace(StrengthNecklace necklace) {
         intelligence += leftRing.getPointsToAdd();
         this.necklace = necklace;
@@ -123,6 +127,10 @@ public class Wizard {
 
     public void setActiveQuest(Quest activeQuest) {
         this.activeQuest = activeQuest;
+    }
+
+    public void setSkill(Heal skill) {
+        this.skill = skill;
     }
 
     public String getName() {

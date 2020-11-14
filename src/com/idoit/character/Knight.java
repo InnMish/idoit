@@ -74,6 +74,7 @@ public class Knight {
         this.experience = this.experience + exp;
     }
 
+    public void calculatePhysicalDefence() {
     public void drinkHpPotion(HpPotion potion) {
         hp += potion.getPointsToRecover();
     }
@@ -82,7 +83,7 @@ public class Knight {
         physicalDefence = physicalDefence + helmet.physicalDefence + cuirass.physicalDefence + gloves.physicalDefence + boots.physicalDefence + shield.physicalDefence;
     }
 
-    private void calculateMagicDefence() {
+    public void calculateMagicDefence() {
         magicDefence = magicDefence + helmet.magicDefence + cuirass.magicDefence + gloves.magicDefence + boots.magicDefence + shield.magicDefence;
     }
 
@@ -162,6 +163,10 @@ public class Knight {
 
     public void setActiveQuest(Quest activeQuest) {
         this.activeQuest = activeQuest;
+    }
+
+    public void setSkill(Rage skill) {
+        this.skill = skill;
     }
 
     public String getName() {
