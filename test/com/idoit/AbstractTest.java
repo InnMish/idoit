@@ -2,6 +2,7 @@ package com.idoit;
 
 import com.idoit.meta.Meta;
 import com.idoit.meta.MetaContext;
+import com.idoit.meta.quest.QuestMeta;
 import com.idoit.safe.SafeSupplier;
 import com.idoit.safe.Safer;
 import org.reflections8.Reflections;
@@ -81,6 +82,20 @@ public abstract class AbstractTest {
         return targetHpField.get(instance);
     }
 
+    protected void testSetterWithMetaParam(Class<? extends Meta> paramMetaClass, String methodName, String fieldName, Object... constructorParams) {
+        testSetterWithMetaParam(paramMetaClass, new Object[]{}, methodName, fieldName, constructorParams);
+    }
+
+    protected void testSetterWithMetaParam(Class<? extends Meta> paramMetaClass, Object[] paramConstructorArgs,
+                                           String methodName, String fieldName, Object... constructorParams) {
+        Safer.runSafe(() -> {
+            Meta meta = MetaContext.getMeta(paramMetaClass);
+            Object param = meta.instantiateObjectWithConstructor(paramConstructorArgs);
+            String message = getSetterAssertMessage(methodName, paramMetaClass.getName(), getMeta().getClassName());
+            testSetter(param, methodName, fieldName, message, constructorParams);
+        });
+    }
+
     protected void testSetter(Object value, String methodName, String fieldName, String assertMessage, Object... constructorParams) {
         Safer.runSafe(() -> {
             Object obj = getMeta().instantiateObjectWithConstructor(constructorParams);
@@ -98,6 +113,15 @@ public abstract class AbstractTest {
                 String.format("После вызова метода %s, переданный %s не записался в поле %s, у которого вызывается метод",
                         methodName, valueType, callerType)
         );
+    }
+
+    protected Object setFieldForObjectAndGet(Object obj, String setterName, Class<? extends Meta> paramMeta,
+                                           Object... paramConstructorArgs) throws Exception {
+        Meta meta = MetaContext.getMeta(paramMeta);
+        Object param = meta.instantiateObjectWithConstructor(paramConstructorArgs);
+        Method setter = obj.getClass().getDeclaredMethod(setterName, meta.getClassFromMeta());
+        setter.invoke(obj, param);
+        return param;
     }
 
     private BiConsumer<Object, Object[]> getSetterAssert(String fieldName, String assertMessage) {

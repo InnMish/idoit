@@ -5,6 +5,7 @@ import com.idoit.meta.item.bijouterie.belt.AgilityBeltMeta;
 import com.idoit.meta.item.bijouterie.necklace.AgilityNecklaceMeta;
 import com.idoit.meta.item.bijouterie.ring.AgilityRingMeta;
 import com.idoit.meta.item.weapon.BowMeta;
+import com.idoit.meta.skill.AccurateShotMeta;
 
 public class ArcherMeta extends CharacterMeta {
     public ArcherMeta() throws ClassNotFoundException {
@@ -15,6 +16,7 @@ public class ArcherMeta extends CharacterMeta {
         addMethod(void.class, "setRightRing", Meta.getClassFromMeta(new AgilityRingMeta()));
         addMethod(void.class, "setBelt", Meta.getClassFromMeta(new AgilityBeltMeta()));
         addMethod(void.class, "setNecklace", Meta.getClassFromMeta(new AgilityNecklaceMeta()));
+        addMethod(void.class, "castSkill", Class.forName(packageName + ".Knight")); //can't pass character meta to itself :(
     }
 
     private void initFields() throws ClassNotFoundException {
@@ -23,5 +25,6 @@ public class ArcherMeta extends CharacterMeta {
         fields.put("rightRing", Meta.getClassFromMeta(new AgilityRingMeta()));
         fields.put("belt", Meta.getClassFromMeta(new AgilityBeltMeta()));
         fields.put("necklace", Meta.getClassFromMeta(new AgilityNecklaceMeta()));
+        fields.put("skill", Class.forName("com.idoit.skill.AccurateShot")); // circular dependency :(
     }
 }

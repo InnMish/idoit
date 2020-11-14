@@ -5,7 +5,7 @@ import com.idoit.meta.MetaContext;
 import com.idoit.meta.character.ArcherMeta;
 import com.idoit.meta.character.KnightMeta;
 import com.idoit.meta.character.WizardMeta;
-import com.idoit.meta.character.npc.BlacksmithMeta;
+import com.idoit.meta.character.npc.seller.BlacksmithMeta;
 import com.idoit.meta.item.armor.HelmetMeta;
 import com.idoit.meta.item.bijouterie.ring.StrengthRingMeta;
 import com.idoit.meta.item.common.potion.HpPotionMeta;
@@ -20,17 +20,12 @@ import org.mockito.Mockito;
 import org.mockito.stubbing.Answer;
 import org.reflections8.Reflections;
 
-import javax.swing.*;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @DisplayName("Тест логики в классе App")
