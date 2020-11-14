@@ -96,4 +96,8 @@ public class Archer {
     public void setActiveQuest(Quest activeQuest) {
         this.activeQuest = activeQuest;
     }
+
+    public void setSkill(AccurateShot skill) {
+        this.skill = skill;
+    }
 }

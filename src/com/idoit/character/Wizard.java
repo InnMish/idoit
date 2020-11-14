@@ -96,4 +96,8 @@ public class Wizard {
     public void setActiveQuest(Quest activeQuest) {
         this.activeQuest = activeQuest;
     }
+
+    public void setSkill(Heal skill) {
+        this.skill = skill;
+    }
 }
