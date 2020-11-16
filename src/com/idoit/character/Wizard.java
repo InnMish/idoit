@@ -86,17 +86,17 @@ public class Wizard {
     }
 
     public void setRightRing(IntelligenceRing rightRing) {
-        intelligence += leftRing.getPointsToAdd();
+        intelligence += rightRing.getPointsToAdd();
         this.rightRing = rightRing;
     }
 
     public void setBelt(IntelligenceBelt belt) {
-        intelligence += leftRing.getPointsToAdd();
+        intelligence += belt.getPointsToAdd();
         this.belt = belt;
     }
 
     public void setNecklace(IntelligenceNecklace necklace) {
-        intelligence += leftRing.getPointsToAdd();
+        intelligence += necklace.getPointsToAdd();
         this.necklace = necklace;
     }
 
