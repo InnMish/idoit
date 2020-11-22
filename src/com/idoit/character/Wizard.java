@@ -215,4 +215,8 @@ public class Wizard {
     public Heal getSkill() {
         return skill;
     }
+
+    public void setSkill(Heal skill) {
+        this.skill = skill;
+    }
 }

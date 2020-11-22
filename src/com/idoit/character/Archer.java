@@ -212,4 +212,8 @@ public class Archer {
     public AccurateShot getSkill() {
         return skill;
     }
+
+    public void setSkill(AccurateShot skill) {
+        this.skill = skill;
+    }
 }
