@@ -68,7 +68,11 @@ public class Knight {
         this.experience = this.experience + exp;
     }
 
-    private void calculatePhysicalDefence() {
+    public void drinkHpPotion(HpPotion potion) {
+        hp += potion.getPointsToRecover();
+    }
+
+    public void calculatePhysicalDefence() {
         physicalDefence = physicalDefence + helmet.physicalDefence + cuirass.physicalDefence + gloves.physicalDefence + boots.physicalDefence + shield.physicalDefence;
     }
 
