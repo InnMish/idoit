@@ -1,0 +1,90 @@
+package com.idoit.character.npc.seller;
+
+import com.idoit.meta.Meta;
+import com.idoit.meta.MetaContext;
+import com.idoit.meta.character.npc.seller.ArmorSellerMeta;
+import com.idoit.meta.item.armor.*;
+import com.idoit.meta.item.special.InitialStoneMeta;
+import com.idoit.safe.SafeFunction;
+import com.idoit.safe.Safer;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.function.BiConsumer;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@DisplayName("Тесты логики в классе ArmorSeller")
+class ArmorSellerTest extends SellerTest {
+
+    @BeforeEach
+	void setUp() {
+        setMeta(ArmorSellerMeta.class);
+    }
+
+    @DisplayName("Тест, что класс ArmorSeller находится в пакете com.idoit.character.npc.seller")
+    @Test
+    void testArmorSellerIsInNpcPackage() {
+        testClassIsInPackage();
+    }
+
+    @DisplayName("Тест, что класс ArmorSeller имеет все необходимые поля")
+    @Test
+    void testArmorSellerHasAllFields() {
+        testClassHasFields();
+    }
+
+    @DisplayName("Тест, что в классе ArmorSeller есть конструктор принимающий название и уровень нпс")
+    @Test
+    void testArmorSellerHasConstructorWithNameAndBothDefenceParams() {
+        testClassHasConstructors();
+        testConstructorSetsValueToFields("test", 3);
+    }
+
+    @DisplayName("Тест, что в классе ArmorSeller есть все необходимые методы")
+    @Test
+    void testArmorSellerHasAllMethods() {
+        testClassHasAllMethods();
+    }
+
+    @DisplayName("Тест, что метод fix в классе ArmorSeller восстанавливает прочность шлема до 100")
+    @Test
+    void testFixIncreasesHelmetDurability() {
+        testFix(HelmetMeta.class, getArmorCreator());
+    }
+
+    @DisplayName("Тест, что метод fix в классе ArmorSeller восстанавливает прочность кирасы до 100")
+    @Test
+    void testFixIncreasesCuirassDurability() {
+        testFix(CuirassMeta.class, getArmorCreator());
+    }
+
+    @DisplayName("Тест, что метод fix в классе ArmorSeller восстанавливает прочность сапог до 100")
+    @Test
+    void testFixIncreasesBootsDurability() {
+        testFix(BootsMeta.class, getArmorCreator());
+    }
+
+    @DisplayName("Тест, что метод fix в классе ArmorSeller восстанавливает прочность перчаток до 100")
+    @Test
+    void testFixIncreasesGlovesDurability() {
+        testFix(GlovesMeta.class, getArmorCreator());
+    }
+
+    @DisplayName("Тест, что метод fix в классе ArmorSeller восстанавливает прочность щита до 100")
+    @Test
+    void testFixIncreasesShieldDurability() {
+        testFix(ShieldMeta.class, getArmorCreator());
+    }
+
+    @DisplayName("Тест, что метод accept в классе ArmorSeller увеличивает уровень кузнеца на 1")
+    @Test
+    void testAccept() {
+        testAccept(InitialStoneMeta.class);
+    }
+
+    private SafeFunction<Meta, Object> getArmorCreator() {
+        return (armorMeta) -> armorMeta.instantiateObjectWithConstructor("armor", 10, 5);
+    }
+}
