@@ -74,7 +74,6 @@ public class Knight {
         this.experience = this.experience + exp;
     }
 
-    public void calculatePhysicalDefence() {
     public void drinkHpPotion(HpPotion potion) {
         hp += potion.getPointsToRecover();
     }

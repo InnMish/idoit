@@ -31,7 +31,7 @@ import static org.mockito.Mockito.verify;
 @DisplayName("Тест логики в классе App")
 class AppTest {
 
-    @DisplayName("Тест, что объект Wizard создается в методе main")
+    /*@DisplayName("Тест, что объект Wizard создается в методе main")
     @Test
     void testWizardIsCreatedInMain() {
         testObjectIsCreatedInMain(MetaContext.getMeta(WizardMeta.class));
@@ -133,7 +133,7 @@ class AppTest {
         });
     }
 
-    /*@DisplayName("В методе main должно выводиться на экран: 100 100 7 7 0 0 0")
+    @DisplayName("В методе main должно выводиться на экран: 100 100 7 7 0 0 0")
     @Test
     void testMainPrints() throws IOException {
         ByteArrayOutputStream bo = new ByteArrayOutputStream();
@@ -146,7 +146,7 @@ class AppTest {
         String expectedLines = MessageUtil.getExpectedPrint("100", "100", "7", "7", "0", "0", "0");
         String message = MessageUtil.formatAssertMessagePrint(expectedLines, actualLines);
         assertEquals(expectedLines, actualLines, message);
-    }*/
+    }
 
     private void testObjectIsCreatedInMain(Meta meta) {
         Reflections reflections = TestUtil.getBaseReflections(meta.getPackageName());
@@ -174,5 +174,5 @@ class AppTest {
         return reflections.getSubTypesOf(Object.class).stream()
                 .filter(clazz -> meta.getFullClassName().equals(clazz.getName()))
                 .findFirst();
-    }
+    }*/
 }

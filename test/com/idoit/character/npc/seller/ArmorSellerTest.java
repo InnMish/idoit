@@ -1,12 +1,19 @@
 package com.idoit.character.npc.seller;
 
 import com.idoit.meta.Meta;
+import com.idoit.meta.MetaContext;
 import com.idoit.meta.character.npc.seller.ArmorSellerMeta;
 import com.idoit.meta.item.armor.*;
+import com.idoit.meta.item.special.InitialStoneMeta;
 import com.idoit.safe.SafeFunction;
+import com.idoit.safe.Safer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.function.BiConsumer;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Тесты логики в классе ArmorSeller")
 class ArmorSellerTest extends SellerTest {
@@ -69,6 +76,12 @@ class ArmorSellerTest extends SellerTest {
     @Test
     void testFixIncreasesShieldDurability() {
         testFix(ShieldMeta.class, getArmorCreator());
+    }
+
+    @DisplayName("Тест, что метод accept в классе ArmorSeller увеличивает уровень кузнеца на 1")
+    @Test
+    void testAccept() {
+        testAccept(InitialStoneMeta.class);
     }
 
     private SafeFunction<Meta, Object> getArmorCreator() {
