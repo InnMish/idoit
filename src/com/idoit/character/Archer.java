@@ -174,4 +174,8 @@ public class Archer {
     public void setProfile(Profile profile) {
         this.profile = profile;
     }
+
+    public void setSkill(AccurateShot skill) {
+        this.skill = skill;
+    }
 }
