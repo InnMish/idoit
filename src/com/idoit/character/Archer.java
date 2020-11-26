@@ -2,22 +2,22 @@ package com.idoit.character;
 
 import com.idoit.battlefield.Point;
 import com.idoit.item.armor.*;
-import com.idoit.item.bijouterie.belt.StrengthBelt;
-import com.idoit.item.bijouterie.necklace.StrengthNecklace;
-import com.idoit.item.bijouterie.ring.StrengthRing;
-import com.idoit.profile.Profile;
+import com.idoit.item.bijouterie.belt.AgilityBelt;
+import com.idoit.item.bijouterie.necklace.AgilityNecklace;
+import com.idoit.item.bijouterie.ring.AgilityRing;
 import com.idoit.item.common.food.Apple;
 import com.idoit.item.weapon.Bow;
+import com.idoit.profile.Profile;
 import com.idoit.quest.Quest;
 import com.idoit.skill.AccurateShot;
 
 public class Archer {
     public Profile profile = new Profile();
     public Bow bow;
-    public StrengthRing leftRing;
-    public StrengthRing rightRing;
-    public StrengthBelt belt;
-    public StrengthNecklace necklace;
+    public AgilityRing leftRing;
+    public AgilityRing rightRing;
+    public AgilityBelt belt;
+    public AgilityNecklace necklace;
     public Point point = new Point(0, 0);
     public Quest activeQuest;
     public AccurateShot skill;
@@ -71,22 +71,22 @@ public class Archer {
         profile.getInventory().setShield(shield);
     }
 
-    public void setLeftRing(StrengthRing leftRing) {
+    public void setLeftRing(AgilityRing leftRing) {
         profile.setAgility(profile.getAgility() + leftRing.getPointsToAdd());
         this.leftRing = leftRing;
     }
 
-    public void setRightRing(StrengthRing rightRing) {
+    public void setRightRing(AgilityRing rightRing) {
         profile.setAgility(profile.getAgility() + rightRing.getPointsToAdd());
         this.rightRing = rightRing;
     }
 
-    public void setBelt(StrengthBelt belt) {
+    public void setBelt(AgilityBelt belt) {
         profile.setAgility(profile.getAgility() + belt.getPointsToAdd());
         this.belt = belt;
     }
 
-    public void setNecklace(StrengthNecklace necklace) {
+    public void setNecklace(AgilityNecklace necklace) {
         profile.setAgility(profile.getAgility() + necklace.getPointsToAdd());
         this.necklace = necklace;
     }
@@ -139,19 +139,19 @@ public class Archer {
         return profile.getInventory().getShield();
     }
 
-    public StrengthRing getLeftRing() {
+    public AgilityRing getLeftRing() {
         return leftRing;
     }
 
-    public StrengthRing getRightRing() {
+    public AgilityRing getRightRing() {
         return rightRing;
     }
 
-    public StrengthBelt getBelt() {
+    public AgilityBelt getBelt() {
         return belt;
     }
 
-    public StrengthNecklace getNecklace() {
+    public AgilityNecklace getNecklace() {
         return necklace;
     }
 
@@ -173,5 +173,9 @@ public class Archer {
 
     public void setProfile(Profile profile) {
         this.profile = profile;
+    }
+
+    public void setSkill(AccurateShot skill) {
+        this.skill = skill;
     }
 }
