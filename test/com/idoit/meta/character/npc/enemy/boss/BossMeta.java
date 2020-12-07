@@ -8,40 +8,48 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public abstract class BossMeta extends Meta {
-    public BossMeta() throws ClassNotFoundException {
+    public BossMeta() {
         packageName = BASE_PACKAGE + ".character.npc.enemy.boss";
-        initFields();
-        addConstructorWithFieldsParams(Collections.unmodifiableList(Arrays.asList("level", "damage")));
-        initSetters();
-        initGetters();
-        addMethod(void.class, "hit", Meta.getClassFromMeta(new KnightMeta()));
-        addMethod(void.class, "go", int.class, int.class);
     }
 
-    private void initFields() throws ClassNotFoundException {
-        fields.put("name", String.class);
-        fields.put("level", int.class);
-        fields.put("damage", int.class);
-        fields.put("expReward", int.class);
-        fields.put("goldReward", int.class);
-        fields.put("point", Meta.getClassFromMeta(new PointMeta()));
+    @Override
+    protected void initFields() throws ClassNotFoundException {
+        addField("name", String.class);
+        addField("level", int.class);
+        addField("damage", int.class);
+        addField("expReward", int.class);
+        addField("goldReward", int.class);
+        addMetaField("point", PointMeta.class);
     }
 
-    private void initSetters() throws ClassNotFoundException {
+    @Override
+    protected void initConstructors() {
+        addConstructorForFields(Collections.unmodifiableList(Arrays.asList("level", "damage")));
+    }
+
+    @Override
+    protected void initSetters() throws ClassNotFoundException {
         addMethod(void.class, "setName", String.class);
         addMethod(void.class, "setLevel", int.class);
         addMethod(void.class, "setDamage", int.class);
         addMethod(void.class, "setExpReward", int.class);
         addMethod(void.class, "setGoldReward", int.class);
-        addMethod(void.class, "setPoint", Meta.getClassFromMeta(new PointMeta()));
+        addMethod(void.class, "setPoint", PointMeta.class);
     }
 
-    private void initGetters() throws ClassNotFoundException {
+    @Override
+    protected void initGetters() throws ClassNotFoundException {
         addMethod(String.class, "getName");
         addMethod(int.class, "getLevel");
         addMethod(int.class, "getDamage");
         addMethod(int.class, "getExpReward");
         addMethod(int.class, "getGoldReward");
-        addMethod(Meta.getClassFromMeta(new PointMeta()), "getPoint");
+        addMethod(PointMeta.class, "getPoint");
+    }
+
+    @Override
+    protected void initMethods() throws ClassNotFoundException {
+        addMethod(void.class, "hit", Meta.getClassFromMeta(new KnightMeta()));
+        addMethod(void.class, "go", int.class, int.class);
     }
 }

@@ -1,25 +1,27 @@
 package com.idoit.meta.item.weapon;
 
-import com.idoit.meta.Meta;
 import com.idoit.meta.item.stone.DamageStoneMeta;
 
 public class SwordMeta extends WeaponMeta {
-    public SwordMeta() throws ClassNotFoundException {
+    public SwordMeta() {
         className = "Sword";
-        initFields();
-        initSetters();
-        initGetters();
     }
 
-    private void initFields() throws ClassNotFoundException {
-        fields.put("stone", Meta.getClassFromMeta(new DamageStoneMeta()));
+    @Override
+    protected void initFields() throws ClassNotFoundException {
+        super.initFields();
+        addMetaField("stone", DamageStoneMeta.class);
     }
 
-    private void initSetters() throws ClassNotFoundException {
-        addMethod(void.class, "setStone", Meta.getClassFromMeta(new DamageStoneMeta()));
+    @Override
+    protected void initSetters() throws ClassNotFoundException {
+        super.initSetters();
+        addMethod(void.class, "setStone", DamageStoneMeta.class);
     }
 
-    private void initGetters() throws ClassNotFoundException {
-        addMethod(Meta.getClassFromMeta(new DamageStoneMeta()), "getStone");
+    @Override
+    protected void initGetters() throws ClassNotFoundException {
+        super.initGetters();
+        addMethod(DamageStoneMeta.class, "getStone");
     }
 }

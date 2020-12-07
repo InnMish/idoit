@@ -8,38 +8,46 @@ import com.idoit.meta.item.weapon.StaffMeta;
 import com.idoit.meta.skill.HealMeta;
 
 public class WizardMeta extends CharacterMeta {
-    public WizardMeta() throws ClassNotFoundException {
+    public WizardMeta() {
         className = "Wizard";
-        initFields();
-        initSetters();
-        initGetters();
-        addMethod(void.class, "castSkill", Class.forName(packageName + ".Knight")); //can't pass character meta to itself :(
     }
 
-    private void initFields() throws ClassNotFoundException {
-        fields.put("staff", Meta.getClassFromMeta(new StaffMeta()));
-        fields.put("leftRing", Meta.getClassFromMeta(new IntelligenceRingMeta()));
-        fields.put("rightRing", Meta.getClassFromMeta(new IntelligenceRingMeta()));
-        fields.put("belt", Meta.getClassFromMeta(new IntelligenceBeltMeta()));
-        fields.put("necklace", Meta.getClassFromMeta(new IntelligenceNecklaceMeta()));
-        fields.put("skill", Class.forName("com.idoit.skill.Heal")); //circular dependency :(
+    @Override
+    protected void initFields() throws ClassNotFoundException {
+        super.initFields();
+        addMetaField("staff", StaffMeta.class);
+        addMetaField("leftRing", IntelligenceRingMeta.class);
+        addMetaField("rightRing", IntelligenceRingMeta.class);
+        addMetaField("belt", IntelligenceBeltMeta.class);
+        addMetaField("necklace", IntelligenceNecklaceMeta.class);
+        addMetaField("skill", HealMeta.class);
     }
 
-    private void initSetters() throws ClassNotFoundException {
-        addMethod(void.class, "setStaff", Meta.getClassFromMeta(new StaffMeta()));
-        addMethod(void.class, "setLeftRing", Meta.getClassFromMeta(new IntelligenceRingMeta()));
-        addMethod(void.class, "setRightRing", Meta.getClassFromMeta(new IntelligenceRingMeta()));
-        addMethod(void.class, "setBelt", Meta.getClassFromMeta(new IntelligenceBeltMeta()));
-        addMethod(void.class, "setNecklace", Meta.getClassFromMeta(new IntelligenceNecklaceMeta()));
-        addMethod(void.class, "setSkill", Class.forName("com.idoit.skill.Heal")); //circular dependency :(
+    @Override
+    protected void initSetters() throws ClassNotFoundException {
+        super.initSetters();
+        addMethod(void.class, "setStaff", StaffMeta.class);
+        addMethod(void.class, "setLeftRing", IntelligenceRingMeta.class);
+        addMethod(void.class, "setRightRing", IntelligenceRingMeta.class);
+        addMethod(void.class, "setBelt", IntelligenceBeltMeta.class);
+        addMethod(void.class, "setNecklace", IntelligenceNecklaceMeta.class);
+        addMethod(void.class, "setSkill", HealMeta.class);
     }
 
-    private void initGetters() throws ClassNotFoundException {
-        addMethod(Meta.getClassFromMeta(new StaffMeta()), "getStaff");
-        addMethod(Meta.getClassFromMeta(new IntelligenceRingMeta()), "getLeftRing");
-        addMethod(Meta.getClassFromMeta(new IntelligenceRingMeta()), "getRightRing");
-        addMethod(Meta.getClassFromMeta(new IntelligenceBeltMeta()), "getBelt");
-        addMethod(Meta.getClassFromMeta(new IntelligenceNecklaceMeta()), "getNecklace");
-        addMethod(Class.forName("com.idoit.skill.Heal"), "getSkill"); //circular dependency :(
+    @Override
+    protected void initGetters() throws ClassNotFoundException {
+        super.initGetters();
+        addMethod(StaffMeta.class, "getStaff");
+        addMethod(IntelligenceRingMeta.class, "getLeftRing");
+        addMethod(IntelligenceRingMeta.class, "getRightRing");
+        addMethod(IntelligenceBeltMeta.class, "getBelt");
+        addMethod(IntelligenceNecklaceMeta.class, "getNecklace");
+        addMethod(HealMeta.class, "getSkill");
+    }
+
+    @Override
+    protected void initMethods() throws ClassNotFoundException {
+        super.initMethods();
+        addMethod(void.class, "castSkill", KnightMeta.class);
     }
 }

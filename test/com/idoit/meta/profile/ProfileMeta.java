@@ -3,31 +3,30 @@ package com.idoit.meta.profile;
 import com.idoit.meta.Meta;
 
 public class ProfileMeta extends Meta {
-    public ProfileMeta() throws ClassNotFoundException {
+    public ProfileMeta() {
         packageName = BASE_PACKAGE + ".profile";
         className = "Profile";
-        initFields();
-        initSetters();
-        initGetters();
     }
 
-    private void initFields() throws ClassNotFoundException {
-        fields.put("name", String.class);
-        fields.put("strength", int.class);
-        fields.put("agility", int.class);
-        fields.put("intelligence", int.class);
-        fields.put("hp", int.class);
-        fields.put("mana", int.class);
-        fields.put("stamina", int.class);
-        fields.put("level", int.class);
-        fields.put("experience", int.class);
-        fields.put("gold", int.class);
-        fields.put("physicalDefence", int.class);
-        fields.put("magicDefence", int.class);
-        fields.put("inventory", new InventoryMeta().getClassFromMeta());
+    @Override
+    protected void initFields() throws ClassNotFoundException {
+        addField("name", String.class);
+        addField("strength", int.class);
+        addField("agility", int.class);
+        addField("intelligence", int.class);
+        addField("hp", int.class);
+        addField("mana", int.class);
+        addField("stamina", int.class);
+        addField("level", int.class);
+        addField("experience", int.class);
+        addField("gold", int.class);
+        addField("physicalDefence", int.class);
+        addField("magicDefence", int.class);
+        addMetaField("inventory", InventoryMeta.class);
     }
 
-    private void initSetters() throws ClassNotFoundException {
+    @Override
+    protected void initSetters() throws ClassNotFoundException {
         addMethod(void.class, "setName", String.class);
         addMethod(void.class, "setStrength", int.class);
         addMethod(void.class, "setAgility", int.class);
@@ -40,10 +39,11 @@ public class ProfileMeta extends Meta {
         addMethod(void.class, "setGold", int.class);
         addMethod(void.class, "setPhysicalDefence", int.class);
         addMethod(void.class, "setMagicDefence", int.class);
-        addMethod(void.class, "setInventory", new InventoryMeta().getClassFromMeta());
+        addMethod(void.class, "setInventory", InventoryMeta.class);
     }
 
-    private void initGetters() throws ClassNotFoundException {
+    @Override
+    protected void initGetters() throws ClassNotFoundException {
         addMethod(String.class, "getName");
         addMethod(int.class, "getStrength");
         addMethod(int.class, "getAgility");
@@ -56,6 +56,6 @@ public class ProfileMeta extends Meta {
         addMethod(int.class, "getGold");
         addMethod(int.class, "getPhysicalDefence");
         addMethod(int.class, "getMagicDefence");
-        addMethod(new InventoryMeta().getClassFromMeta(), "getInventory");
+        addMethod(InventoryMeta.class, "getInventory");
     }
 }

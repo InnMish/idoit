@@ -7,14 +7,18 @@ import java.util.Arrays;
 public abstract class SkillMeta extends Meta {
     public SkillMeta() {
         packageName = BASE_PACKAGE + ".skill";
-        initFields();
-        addConstructorWithFieldsParams(Arrays.asList("name", "spendsMana", "minLevel"));
     }
 
-    private void initFields() {
-        fields.put("spendsMana", int.class);
-        fields.put("minLevel", int.class);
-        fields.put("characterClass", String.class);
-        fields.put("name", String.class);
+    @Override
+    protected void initFields() {
+        addField("spendsMana", int.class);
+        addField("minLevel", int.class);
+        addField("characterClass", String.class);
+        addField("name", String.class);
+    }
+
+    @Override
+    protected void initConstructors() {
+        addConstructorForFields(Arrays.asList("name", "spendsMana", "minLevel"));
     }
 }

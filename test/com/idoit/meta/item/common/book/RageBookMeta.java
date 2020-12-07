@@ -1,11 +1,15 @@
 package com.idoit.meta.item.common.book;
 
-import com.idoit.meta.Meta;
 import com.idoit.meta.skill.RageMeta;
 
 public class RageBookMeta extends BookMeta {
-    public RageBookMeta() throws ClassNotFoundException {
+    public RageBookMeta() {
         className = "RageBook";
-        fields.put("skill", Meta.getClassFromMeta(new RageMeta()));
+    }
+
+    @Override
+    protected void initFields() throws ClassNotFoundException {
+        super.initFields();
+        addMetaField("skill", RageMeta.class);
     }
 }

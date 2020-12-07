@@ -5,13 +5,15 @@ import com.idoit.meta.Meta;
 import java.util.Arrays;
 
 public class BijouterieMeta extends Meta {
-    public BijouterieMeta() {
-        initFields();
-        addConstructorWithFieldsParams(Arrays.asList("name", "pointsToAdd"));
+
+    @Override
+    protected void initFields() {
+        addField("name", String.class);
+        addField("pointsToAdd", int.class);
     }
 
-    private void initFields() {
-        fields.put("name", String.class);
-        fields.put("pointsToAdd", int.class);
+    @Override
+    protected void initConstructors() {
+        addConstructorForFields(Arrays.asList("name", "pointsToAdd"));
     }
 }

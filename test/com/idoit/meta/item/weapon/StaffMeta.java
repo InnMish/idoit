@@ -4,22 +4,25 @@ import com.idoit.meta.Meta;
 import com.idoit.meta.item.stone.HealStoneMeta;
 
 public class StaffMeta extends WeaponMeta {
-    public StaffMeta() throws ClassNotFoundException {
+    public StaffMeta() {
         className = "Staff";
-        initFields();
-        initSetters();
-        initGetters();
     }
 
-    private void initFields() throws ClassNotFoundException {
-        fields.put("stone", Meta.getClassFromMeta(new HealStoneMeta()));
+    @Override
+    protected void initFields() throws ClassNotFoundException {
+        super.initFields();
+        addMetaField("stone", HealStoneMeta.class);
     }
 
-    private void initSetters() throws ClassNotFoundException {
-        addMethod(void.class, "setStone", Meta.getClassFromMeta(new HealStoneMeta()));
+    @Override
+    protected void initSetters() throws ClassNotFoundException {
+        super.initSetters();
+        addMethod(void.class, "setStone", HealStoneMeta.class);
     }
 
-    private void initGetters() throws ClassNotFoundException {
-        addMethod(Meta.getClassFromMeta(new HealStoneMeta()), "getStone");
+    @Override
+    protected void initGetters() throws ClassNotFoundException {
+        super.initGetters();
+        addMethod(HealStoneMeta.class, "getStone");
     }
 }

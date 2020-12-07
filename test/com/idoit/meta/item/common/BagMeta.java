@@ -5,11 +5,15 @@ import java.util.Collections;
 public class BagMeta extends CommonMeta {
     public BagMeta() {
         className = "Bag";
-        initFields();
-        addConstructorWithFieldsParams(Collections.singletonList("name"));
     }
 
-    private void initFields() {
-        fields.put("name", String.class);
+    @Override
+    protected void initFields() {
+        addField("name", String.class);
+    }
+
+    @Override
+    protected void initConstructors() {
+        addConstructorForFields(Collections.singletonList("name"));
     }
 }

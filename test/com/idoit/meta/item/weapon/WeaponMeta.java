@@ -7,14 +7,22 @@ import java.util.Arrays;
 public abstract class WeaponMeta extends Meta {
     public WeaponMeta() {
         packageName = BASE_PACKAGE + ".item.weapon";
-        initFields();
-        addConstructorWithFieldsParams(Arrays.asList("name", "damage"));
-        addMethod(void.class, "setDurability", int.class);
     }
 
-    private void initFields() {
-        fields.put("name", String.class);
-        fields.put("damage", int.class);
-        fields.put("durability", int.class);
+    @Override
+    protected void initFields() throws ClassNotFoundException {
+        addField("name", String.class);
+        addField("damage", int.class);
+        addField("durability", int.class);
+    }
+
+    @Override
+    protected void initConstructors() {
+        addConstructorForFields(Arrays.asList("name", "damage"));
+    }
+
+    @Override
+    protected void initMethods() throws ClassNotFoundException {
+        addMethod(void.class, "setDurability", int.class);
     }
 }

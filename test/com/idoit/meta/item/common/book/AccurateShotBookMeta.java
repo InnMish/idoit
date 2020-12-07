@@ -1,11 +1,15 @@
 package com.idoit.meta.item.common.book;
 
-import com.idoit.meta.Meta;
 import com.idoit.meta.skill.AccurateShotMeta;
 
 public class AccurateShotBookMeta extends BookMeta {
-    public AccurateShotBookMeta() throws ClassNotFoundException {
+    public AccurateShotBookMeta() {
         className = "AccurateShotBook";
-        fields.put("skill", Meta.getClassFromMeta(new AccurateShotMeta()));
+    }
+
+    @Override
+    protected void initFields() throws ClassNotFoundException {
+        super.initFields();
+        addMetaField("skill", AccurateShotMeta.class);
     }
 }

@@ -1,7 +1,7 @@
 package com.idoit.meta.character.npc.enemy;
 
 public class RougeMeta extends EnemyMeta {
-    public RougeMeta() throws ClassNotFoundException {
+    public RougeMeta() {
         className = "Rouge";
     }
 }

@@ -7,13 +7,17 @@ import java.util.Arrays;
 public abstract class SellerMeta extends Meta {
     public SellerMeta() {
         packageName = BASE_PACKAGE + ".character.npc.seller";
-        initFields();
-        addConstructorWithFieldsParams(Arrays.asList("name", "level"));
     }
 
-    private void initFields() {
-        fields.put("name", String.class);
-        fields.put("gold", int.class);
-        fields.put("level", int.class);
+    @Override
+    protected void initFields() {
+        addField("name", String.class);
+        addField("gold", int.class);
+        addField("level", int.class);
+    }
+
+    @Override
+    protected void initConstructors() {
+        addConstructorForFields(Arrays.asList("name", "level"));
     }
 }

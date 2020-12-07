@@ -7,16 +7,24 @@ import java.util.Arrays;
 public abstract class ArmorMeta extends Meta {
     public ArmorMeta() {
         packageName = BASE_PACKAGE + ".item.armor";
-        initFields();
-        addConstructorWithFieldsParams(Arrays.asList("name", "physicalDefence", "magicDefence"));
-        addMethod(void.class, "setDurability", int.class);
     }
 
-    private void initFields() {
-        fields.put("name", String.class);
-        fields.put("type", String.class);
-        fields.put("physicalDefence", int.class);
-        fields.put("magicDefence", int.class);
-        fields.put("durability", int.class);
+    @Override
+    protected void initFields() {
+        addField("name", String.class);
+        addField("type", String.class);
+        addField("physicalDefence", int.class);
+        addField("magicDefence", int.class);
+        addField("durability", int.class);
+    }
+
+    @Override
+    protected void initConstructors() {
+        addConstructorForFields(Arrays.asList("name", "physicalDefence", "magicDefence"));
+    }
+
+    @Override
+    protected void initMethods() throws ClassNotFoundException {
+        addMethod(void.class, "setDurability", int.class);
     }
 }

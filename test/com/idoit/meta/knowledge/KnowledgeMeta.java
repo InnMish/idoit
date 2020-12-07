@@ -6,22 +6,22 @@ public class KnowledgeMeta extends Meta {
     public KnowledgeMeta() {
         packageName = BASE_PACKAGE + ".knowledge";
         className = "Knowledge";
-        initFields();
-        initSetters();
-        initGetters();
     }
 
-    private void initFields() {
-        fields.put("description", String.class);
-        fields.put("person", String.class);
+    @Override
+    protected void initFields() {
+        addField("description", String.class);
+        addField("person", String.class);
     }
 
-    private void initSetters() {
+    @Override
+    protected void initSetters() throws ClassNotFoundException {
         addMethod(void.class, "setDescription", String.class);
         addMethod(void.class, "setPerson", String.class);
     }
 
-    private void initGetters() {
+    @Override
+    protected void initGetters() throws ClassNotFoundException {
         addMethod(String.class, "getDescription");
         addMethod(String.class, "getPerson");
     }

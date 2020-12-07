@@ -14,6 +14,11 @@ public abstract class Meta {
     private Set<List<Map.Entry<String, Class<?>>>> constructors = new HashSet<>();
     private Set<Method> methods = new HashSet<>();
 
+    public static Class<?> getClassFromMeta(Class<? extends Meta> clazz) throws ClassNotFoundException {
+        Meta meta = MetaContext.getMeta(clazz);
+        return getClassFromMeta(meta);
+    }
+
     public static Class<?> getClassFromMeta(Meta meta) throws ClassNotFoundException {
         return Class.forName(meta.getFullClassName());
     }
@@ -21,6 +26,34 @@ public abstract class Meta {
     public static Object instantiateObjectFromMeta(Class<? extends Meta> metaClass, Object... params) throws Exception {
         Meta meta = MetaContext.getMeta(metaClass);
         return meta.instantiateObjectWithConstructor(params);
+    }
+
+    void init() throws ClassNotFoundException {
+        initFields();
+        initConstructors();
+        initSetters();
+        initGetters();
+        initMethods();
+    }
+
+    protected void initFields() throws ClassNotFoundException {
+        //no fields by default
+    }
+
+    protected void initConstructors() {
+        //no constructors by default
+    }
+
+    protected void initSetters() throws ClassNotFoundException {
+        //no setters by default
+    }
+
+    protected void initGetters() throws ClassNotFoundException {
+        //no getters by default
+    }
+
+    protected void initMethods() throws ClassNotFoundException {
+        //no methods by default
     }
 
     public Class<?> getClassFromMeta() throws ClassNotFoundException {
@@ -36,7 +69,15 @@ public abstract class Meta {
         return getClassFromMeta().getDeclaredMethod(name, paramTypes);
     }
 
-    protected void addConstructorWithFieldsParams(List<String> fieldNames) {
+    protected void addField(String fieldName, Class<?> clazz) {
+        fields.put(fieldName, clazz);
+    }
+
+    protected void addMetaField(String fieldName, Class<? extends Meta> clazz) throws ClassNotFoundException {
+        fields.put(fieldName, getClassFromMeta(clazz));
+    }
+
+    protected void addConstructorForFields(List<String> fieldNames) {
         List<Map.Entry<String, Class<?>>> constructor = new ArrayList<>();
         fieldNames.forEach(fieldName -> fields.entrySet().stream()
                 .filter(field -> field.getKey().equals(fieldName))
@@ -59,7 +100,15 @@ public abstract class Meta {
                 .orElse(null);
     }
 
-    protected void addMethod(Class<?> returnType, String name, Class<?>... paramTypes) {
+    protected void addMethod(Class<?> returnType, String name, Class<?>... paramTypes) throws ClassNotFoundException {
+        if (Meta.class.isAssignableFrom(returnType)) {
+            returnType = MetaContext.getMeta(returnType).getClassFromMeta();
+        }
+        for (int i = 0; i < paramTypes.length; i++) {
+            if (Meta.class.isAssignableFrom(paramTypes[i])) {
+                paramTypes[i] = MetaContext.getMeta(paramTypes[i]).getClassFromMeta();
+            }
+        }
         methods.add(new Method(returnType, name, Arrays.asList(paramTypes)));
     }
 

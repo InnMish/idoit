@@ -7,18 +7,26 @@ import com.idoit.meta.quest.QuestMeta;
 import java.util.Arrays;
 
 public class NpcMeta extends Meta {
-    public NpcMeta() throws ClassNotFoundException {
+    public NpcMeta() {
         packageName = BASE_PACKAGE + ".character.npc";
         className = "NPC";
-        initFields();
-        addConstructorWithFieldsParams(Arrays.asList("name", "level"));
-        addMethod(void.class, "setQuest", Meta.getClassFromMeta(new QuestMeta()));
-        addMethod(void.class, "giveQuest", Meta.getClassFromMeta(new KnightMeta()));
     }
 
-    private void initFields() throws ClassNotFoundException {
-        fields.put("name", String.class);
-        fields.put("level", int.class);
-        fields.put("quest", Meta.getClassFromMeta(new QuestMeta()));
+    @Override
+    protected void initConstructors() {
+        addConstructorForFields(Arrays.asList("name", "level"));
+    }
+
+    @Override
+    protected void initFields() throws ClassNotFoundException {
+        addField("name", String.class);
+        addField("level", int.class);
+        addMetaField("quest", QuestMeta.class);
+    }
+
+    @Override
+    protected void initMethods() throws ClassNotFoundException {
+        addMethod(void.class, "setQuest", QuestMeta.class);
+        addMethod(void.class, "giveQuest", KnightMeta.class);
     }
 }

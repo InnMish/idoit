@@ -5,26 +5,26 @@ import com.idoit.meta.knowledge.KnowledgeMeta;
 import com.idoit.meta.quest.QuestMeta;
 
 public class JournalMeta extends Meta {
-    public JournalMeta() throws ClassNotFoundException {
+    public JournalMeta() {
         packageName = BASE_PACKAGE + ".profile";
         className = "Journal";
-        initFields();
-        initSetters();
-        initGetters();
     }
 
-    private void initFields() throws ClassNotFoundException {
-        fields.put("knowledge", new KnowledgeMeta().getClassFromMeta());
-        fields.put("quest", new QuestMeta().getClassFromMeta());
+    @Override
+    protected void initFields() throws ClassNotFoundException {
+        addMetaField("knowledge", KnowledgeMeta.class);
+        addMetaField("quest", QuestMeta.class);
     }
 
-    private void initSetters() throws ClassNotFoundException {
-        addMethod(void.class, "setKnowledge", new KnowledgeMeta().getClassFromMeta());
-        addMethod(void.class, "setQuest", new QuestMeta().getClassFromMeta());
+    @Override
+    protected void initSetters() throws ClassNotFoundException {
+        addMethod(void.class, "setKnowledge", KnowledgeMeta.class);
+        addMethod(void.class, "setQuest", QuestMeta.class);
     }
 
-    private void initGetters() throws ClassNotFoundException {
-        addMethod(new KnowledgeMeta().getClassFromMeta(), "getKnowledge");
-        addMethod(new QuestMeta().getClassFromMeta(), "getQuest");
+    @Override
+    protected void initGetters() throws ClassNotFoundException {
+        addMethod(KnowledgeMeta.class, "getKnowledge");
+        addMethod(QuestMeta.class, "getQuest");
     }
 }
